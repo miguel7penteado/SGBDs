@@ -192,9 +192,9 @@ SELECT * FROM "meus-vetores" ORDER BY embedding <-> '[3,1,2]' LIMIT 5;
 /*
 Esta estensão também suporta:
 
- produto interno    <#> 
- distância cosseno (<=>) 
- distância L1      (<+>  OBS: esse operador foi adicionado a partir da versão 0.7.0 da extensão
+ produto interno   pelo operador <#> 
+ distância cosseno pelo operador <=> 
+ distância L1      pelo operador <+>  OBS: esse operador foi adicionado a partir da versão 0.7.0 da extensão
 
 Nota: O produto interno <#> retorna o produto interno negativo, pois o Postgres suporta apenas varreduras de índice de pedidos ASC em operadores
 
