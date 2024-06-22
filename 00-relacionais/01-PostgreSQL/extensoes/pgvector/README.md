@@ -195,6 +195,7 @@ Esta estensão também suporta:
  produto interno   pelo operador <#> 
  distância cosseno pelo operador <=> 
  distância L1      pelo operador <+>  OBS: esse operador foi adicionado a partir da versão 0.7.0 da extensão
+ distância L2      pelo operador <->
 
 Nota: O produto interno <#> retorna o produto interno negativo, pois o Postgres suporta apenas varreduras de índice de pedidos ASC em operadores
 
