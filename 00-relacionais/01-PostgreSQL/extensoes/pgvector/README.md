@@ -35,7 +35,7 @@ Agora entre do diretório que você baixou o código fonte
 cd %TMP\pgvector%
 ```
 
-E execute construtor do código fonte. O Visual Studio vai compilar tudo para você.
+E execute construtor do código fonte com a boa e velha ferramenta NMAKE. O compilador cl do Visual C++ vai compilar tudo para você.
 
 ```cmd
 C:\Users\COMPUT~1\AppData\Local\Temp\pgvector>nmake /F Makefile.win
@@ -89,3 +89,74 @@ Direitos autorais da Microsoft Corporation. Todos os direitos reservados.
 		Criando biblioteca vector.lib e objeto vector.exp
 
 ```
+
+### Instalação a moda antinga: "NMAKE INSTALL"
+
+Você agora vai instalar as bibliotecas dentro da pasta de instalação do seu PostgreSQL versão 15. Quem vai fazer isso para você é a ferramenta NMAKE.
+Era assim que funcionava antigamente antes da popularização das ferramentas de Entrega de Pacotes, vulgo instaladores.
+
+(Não preciso lembrar que para você conseguir fazer isso, seu ambiente com as variáveis que definimos acima deve ser de ADMINISTRADOR. Caso contrário o NMAKE não terá permissão de escrita na pasta do PostgreSQL).
+
+```cmd
+C:\Users\COMPUT~1\AppData\Local\Temp\pgvector>nmake /f Makefile.win install
+
+Microsoft (R) Program Maintenance Utility Versão 14.31.31104.0
+Direitos autorais da Microsoft Corporation. Todos os direitos reservados.
+
+        copy vector.dll "C:\Program Files\PostgreSQL\15\lib"
+        1 arquivo(s) copiado(s).
+
+        copy vector.control "C:\Program Files\PostgreSQL\15\share\extension"
+        1 arquivo(s) copiado(s).
+
+        copy sql\vector--*.sql "C:\Program Files\PostgreSQL\15\share\extension"
+sql\vector--0.1.0--0.1.1.sql
+sql\vector--0.1.1--0.1.3.sql
+sql\vector--0.1.3--0.1.4.sql
+sql\vector--0.1.4--0.1.5.sql
+sql\vector--0.1.5--0.1.6.sql
+sql\vector--0.1.6--0.1.7.sql
+sql\vector--0.1.7--0.1.8.sql
+sql\vector--0.1.8--0.2.0.sql
+sql\vector--0.2.0--0.2.1.sql
+sql\vector--0.2.1--0.2.2.sql
+sql\vector--0.2.2--0.2.3.sql
+sql\vector--0.2.3--0.2.4.sql
+sql\vector--0.2.4--0.2.5.sql
+sql\vector--0.2.5--0.2.6.sql
+sql\vector--0.2.6--0.2.7.sql
+sql\vector--0.2.7--0.3.0.sql
+sql\vector--0.3.0--0.3.1.sql
+sql\vector--0.3.1--0.3.2.sql
+sql\vector--0.3.2--0.4.0.sql
+sql\vector--0.4.0--0.4.1.sql
+sql\vector--0.4.1--0.4.2.sql
+sql\vector--0.4.2--0.4.3.sql
+sql\vector--0.4.3--0.4.4.sql
+sql\vector--0.4.4--0.5.0.sql
+sql\vector--0.5.0--0.5.1.sql
+sql\vector--0.5.1--0.6.0.sql
+sql\vector--0.6.0--0.6.1.sql
+sql\vector--0.6.1--0.6.2.sql
+sql\vector--0.6.2--0.7.0.sql
+sql\vector--0.7.0--0.7.1.sql
+sql\vector--0.7.1--0.7.2.sql
+sql\vector--0.7.2.sql
+       32 arquivo(s) copiado(s).
+	   
+       mkdir "C:\Program Files\PostgreSQL\15\include\server\extension\vector"
+       
+	   for %f in (src\halfvec.h src\sparsevec.h src\vector.h) do copy %f "C:\Program Files\PostgreSQL\15\include\server\extension\vector"
+
+C:\Users\COMPUT~1\AppData\Local\Temp\pgvector>copy src\halfvec.h "C:\Program Files\PostgreSQL\15\include\server\extension\vector"
+        1 arquivo(s) copiado(s).
+
+C:\Users\COMPUT~1\AppData\Local\Temp\pgvector>copy src\sparsevec.h "C:\Program Files\PostgreSQL\15\include\server\extension\vector"
+        1 arquivo(s) copiado(s).
+
+C:\Users\COMPUT~1\AppData\Local\Temp\pgvector>copy src\vector.h "C:\Program Files\PostgreSQL\15\include\server\extension\vector"
+        1 arquivo(s) copiado(s).
+```
+
+Feito !
+
