@@ -168,3 +168,40 @@ C:\Users\COMPUT~1\AppData\Local\Temp\pgvector>copy src\vector.h "C:\Program File
 
 Feito !
 
+## Brincando um pouco com sua nova extensão:
+
+```sql
+-- ativando a exensão do banco de dados
+CREATE EXTENSION vector;
+
+-- criando a sua tabela. Vamos chama-la de meus-vetores
+-- A coluna que vai armazenar os vetores se chama, por exemplo, embedding. Sugestivo.
+
+CREATE TABLE  "meus-vetores" 
+(
+   id        bigserial PRIMARY KEY, 
+   embedding vector(3)
+);
+
+-- Vamos colocar dois vetores tridimensionais dentro da tabela meus-vetores
+INSERT   INTO "meus-vetores" (embedding) VALUES ('[1,2,3]'), ('[4,5,6]');
+
+-- Obtenha os vizinhos mais próximos pela distância L2
+SELECT * FROM "meus-vetores" ORDER BY embedding <-> '[3,1,2]' LIMIT 5;
+
+/*
+Esta estensão também suporta:
+
+ produto interno    <#> 
+ distância cosseno (<=>) 
+ distância L1      (<+>  OBS: esse operador foi adicionado a partir da versão 0.7.0 da extensão
+
+Nota: O produto interno <#> retorna o produto interno negativo, pois o Postgres suporta apenas varreduras de índice de pedidos ASC em operadores
+
+*/
+
+
+```
+
+
+
