@@ -2,10 +2,18 @@
 
 ## Extensão do SGBD Postgres para Base de dados Vetoriais
 
-### Repositório no github
-[pgvector no GitHub](https://github.com/Azure-Samples/azure-postgres-pgvector-python)
+### Antes de começar
+Você precisa ter instalado no seu windows
 
-### Instalação no MS-Windows 10 rodando o SGBD Postgresql versão 15
+- PostgreSQL (versão 15 ou superior)
+- GIT for windows
+- Visual Studio (profissional ou comunidade) com o Visual C++ ativado (usei a versão 2022, mas o Visual Studio 2019 deve servir também).
+
+Esse é o link do Repositório no github do projeto [pgvector no GitHub](https://github.com/Azure-Samples/azure-postgres-pgvector-python).
+
+### Preparando o ambiente para compilar o código fonte
+
+Abra uma janela do Prompt de comando (janela do "DOS") e siga as instruções abaixo:
 
 Configure as **variáveis de ambiente C++** relativas ao Visual Studio 2022 de linha de comando. O Visual Studio ofere o arquivo de lotes **vcvarsx86_amd64.bat** para te ajudar a fazer isso.
 ```cmd
